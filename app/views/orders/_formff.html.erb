@@ -1,0 +1,45 @@
+<%= form_for(@order) do |f| %>
+  <% if @order.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:</h2>
+
+      <ul>
+      <% @order.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+ 
+ <%= f.label :user_id %><br />
+    <%= f.select(:user_id, @users.collect {|t| [t.username, t.id]})%><br />
+ 
+<p>
+  <b>Start:</b>
+  <%= @order.start %>
+</p>
+
+<p>
+  <b>Finish:</b>
+  <%= @order.finish %>
+</p>
+
+<p>
+  <b>Content:</b>
+  <%= @order.content %>
+</p>
+
+
+   <div class="field">
+    Register as done
+  	<%= f.check_box :end %>
+  </div>
+  	
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+
+
+  	<% end %>
+ 
+

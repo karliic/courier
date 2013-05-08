@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @order.name %>
+</p>
+
+<p>
+  <b>Number:</b>
+  <%= @order.number %>
+</p>
+
+<p>
+  <b>Start:</b>
+  <%= @order.start %>
+</p>
+
+<p>
+  <b>Finish:</b>
+  <%= @order.finish %>
+</p>
+
+<p>
+  <b>Content:</b>
+  <%= @order.content %>
+</p>
+
+
+<%= link_to 'Edit', edit_order_path(@order) %> |
+<%= link_to 'Home', :controller => 'public', :action => 'index' %>

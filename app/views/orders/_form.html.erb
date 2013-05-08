@@ -1,0 +1,73 @@
+<%= form_for(@order) do |f| %>
+  <% if @order.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:</h2>
+
+      <ul>
+      <% @order.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+ <% if !(session[:user_id] or session[:admin_id])  %>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :number %><br />
+    <%= f.number_field :number %>
+  </div>
+  <div class="field">
+    <%= f.label :start %><br />
+    <%= f.text_field :start %>
+  </div>
+  <div class="field">
+    <%= f.label :finish %><br />
+    <%= f.text_field :finish %>
+  </div>
+  <div class="field">
+    <%= f.label :content %><br />
+    <%= f.text_field :content %>
+  </div>
+  <% end %>
+  <% if session[:user_id] or session[:admin_id]  %>
+  <p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @order.name %>
+</p>
+
+<p>
+  <b>Number:</b>
+  <%= @order.number %>
+</p>
+
+<p>
+  <b>Start:</b>
+  <%= @order.start %>
+</p>
+
+<p>
+  <b>Finish:</b>
+  <%= @order.finish %>
+</p>
+
+<p>
+  <b>Content:</b>
+  <%= @order.content %>
+</p>
+
+
+   <div class="field">
+   Check for transport
+  	<%= f.check_box :road %>
+  </div>
+  	<% end %>
+  	
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

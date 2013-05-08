@@ -7,6 +7,36 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+	<% if !(session[:user_id] or session[:admin_id])%>
+<%= form_tag(:action => 'attempt_login') do %>
+		Username: <%= text_field_tag(:username) %>
+		      Password <%= password_field_tag(:password) %> 
+		       <%= submit_tag("Log In") %></td>
+	
+		 <% end %>
+		  <% end %>	
+Sākumlapa <% if session[:user_id]  %>
+<b> Hello,  <%= session[:username]%> !</b><%= link_to("Logout",:controller => 'application', :action => 'logout') %>
+		    <% end %>
+<% if session[:admin_id]  %>
+<b> ADMIN,  <%= session[:username]%> !</b><%= link_to("Logout",:controller => 'application', :action => 'logout') %>
+		    <% end %>
+ <li><%= link_to "Home", :controller => 'public', :action => 'index' %></li>
+          <li><%= link_to "Help",    '#' %></li>
+          <li><%= link_to "Sign in", :controller => 'public', :action => 'signin' %></li>
+              <li><%= link_to "Sign up", :controller => 'users', :action => 'new' %></li>
+                  <li><%= link_to "Order...", :controller => 'orders', :action => 'new' %></li>
+                  <% if session[:user_id] or session[:admin_id]%>
+                   <li><%= link_to "Available Orders", :controller => 'orders', :action => 'index' %></li>
+                  <% end %>
+                   <% if session[:user_id]%>
+                   <li><%= link_to "My road Orders", :controller => 'orders', :action => 'courier_onroad' %></li>
+                  <% end %>
+                   <% if session[:admin_id]%>
+                   <li><%= link_to "On road Orders", :controller => 'orders', :action => 'onroad' %></li>
+                    <li><%= link_to "Done Orders", :controller => 'orders', :action => 'completed'  %></li>
+                  <% end %>
+                 
 
 <%= yield %>
 
