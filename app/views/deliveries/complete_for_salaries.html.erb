@@ -1,0 +1,59 @@
+<h1><%= @user.username%> completed orders</h1>
+
+<table class="table table-bdeliveryed">
+  <tr>
+    <th>User</th>
+    <th>Name</th>
+    <th>City</th>
+    <th>Start</th>
+    <th>Finish</th>
+    <th>Content</th>
+    <th>Price</th>
+    
+    <th></th>
+  </tr>
+<% sum = 0 %> 
+<% @deliveries.each do |delivery| %>
+  <% if delivery.end == true %>
+  <tr>
+     <td><%= delivery.user.username %></td>
+    <td><%= delivery.name %></td>
+     <td><%= delivery.city %></td>
+    <td><%= delivery.start %></td>
+    <td><%= delivery.finish %></td>
+    <td><%= delivery.content %></td>
+      <%  if delivery.weight > 1 and delivery.weight < 1.5 %>
+  <% delivery.price = 1.5  %>
+  <% end %>
+   <%  if delivery.weight > 1.5 and delivery.weight < 2 %>
+  <% delivery.price = 2  %>
+  <% end %>
+  <%  if delivery.weight > 2 and delivery.weight < 2.5 %>
+  <% delivery.price = 2.5  %>
+  <% end %>
+   <%  if delivery.weight > 2.5 and delivery.weight < 3 %>
+  <% delivery.price = 3  %>
+  <% end %>
+  <%  if delivery.weight > 3 and delivery.weight < 3.5 %>
+  <% delivery.price = 3.5  %>
+  <% end %>
+   <%  if delivery.weight > 3.5 and delivery.weight < 4 %>
+  <% delivery.price = 4  %>
+  <% end %>
+  <%  if delivery.weight > 4 and delivery.weight < 4.5 %>
+  <% delivery.price = 4.5  %>
+  <% end %>
+  <%  if delivery.weight > 4.5 and delivery.weight < 5 %>
+  <% delivery.price = 5  %>
+  <% end %>
+    <td><%= delivery.price %></td>
+      <% sum = delivery.price + sum %>
+
+        <td><%= link_to 'Destroy', delivery, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+  <% end %>
+<% end %>
+</table>
+Kopā nopelnīts <%suum =  sum * 0.7 %><%= suum.round(2)%> Ls
+<br />
+

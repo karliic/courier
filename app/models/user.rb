@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
-  attr_accessible :name, :password, :username
-  
+  attr_accessible :name, :password, :username, :salary
+   
+   has_many :deliveries
+   
    def self.authenticate(username="", password="")
     user = User.find_by_username(username)
      password == User.find_by_password(password)

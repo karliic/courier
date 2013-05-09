@@ -13,7 +13,10 @@
  
  <%= f.label :user_id %><br />
     <%= f.select(:user_id, @users.collect {|t| [t.username, t.id]})%><br />
- 
+ <p>
+  <b>City:</b>
+  <%= @delivery.city %>
+</p> 
 <p>
   <b>Start:</b>
   <%= @delivery.start %>
@@ -27,6 +30,14 @@
 <p>
   <b>Content:</b>
   <%= @delivery.content %>
+</p>
+<p>
+  <b>Weight:</b>
+  <%= @delivery.weight %> Kg
+</p>
+<p>
+  <b>Price:</b>
+  <%= @delivery.price %> Ls
 </p>
 
 

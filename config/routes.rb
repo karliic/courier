@@ -1,16 +1,16 @@
 Courier::Application.routes.draw do
-  resources :deliveries
+ 
 
 
   resources :orders
-
+ 
 
   resources :admins
+ resources :deliveries
 
-
-  resources :users
-
-
+  resources :users do
+       resources :deliveries
+  end
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -25,6 +25,8 @@ Courier::Application.routes.draw do
     match '/signin' => 'public#signin'
     match '/order' => 'deliveries#new'
     match '/deliveries' => 'deliveries#index'
+     match '/courier_salaries' => 'deliveries#courier_salaries'
+       match '/salaries' => 'deliveries#complete_for_salaries'
 
   # Keep in mind you can assign values other than :controller and :action
 

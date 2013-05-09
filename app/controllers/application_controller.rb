@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
      def confirmed_logged_in
     unless session[:user_id] or session[:admin_id]
       flash[:notice] = "Please log in."
-      redirect_to(:controller => 'public', :action => 'home')
+      redirect_to(:controller => 'public', :action => 'signin')
       return false 
     else
       return true

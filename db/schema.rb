@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130509082942) do
+ActiveRecord::Schema.define(:version => 20130509101444) do
 
   create_table "admins", :force => true do |t|
     t.string   "username"
@@ -28,6 +28,9 @@ ActiveRecord::Schema.define(:version => 20130509082942) do
     t.string   "start"
     t.string   "finish"
     t.string   "content"
+    t.string   "city"
+    t.float    "weight"
+    t.float    "price",      :default => 1.0
     t.boolean  "road",       :default => false
     t.boolean  "end",        :default => false
     t.datetime "created_at",                    :null => false
@@ -58,6 +61,7 @@ ActiveRecord::Schema.define(:version => 20130509082942) do
     t.string   "name"
     t.string   "username"
     t.string   "password"
+    t.float    "salary"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

@@ -1,0 +1,26 @@
+<h1>Courier salary</h1>
+
+<table class="table table-bdeliveryed">
+  <tr>
+    <th>User</th>
+    <th>Price</th>
+    
+    
+    <th></th>
+  </tr>
+ <% sum = 0 %>
+<% @deliveries.each do |delivery| %>
+  <% if delivery.end == true %>
+  <tr>
+  <td> <%= delivery.user.username %></td>
+     
+    <td><%= delivery.price %></td>
+      <% sum = delivery.price + sum %>
+        <td><%= link_to 'Destroy', delivery, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+  <% end %>
+<% end %>
+</table>
+<%= sum %>
+<br />
+

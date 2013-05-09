@@ -1,6 +1,9 @@
 class DeliveriesController < ApplicationController
   # GET /deliveries
   # GET /deliveries.json
+  before_filter :find_delivery
+  before_filter :confirmed_logged_in
+  
   def index
     @deliveries = Delivery.all
     @users = User.all
@@ -11,7 +14,18 @@ class DeliveriesController < ApplicationController
       format.json { render json: @deliveries }
     end
   end
+  
+  def courier_salaries
+     @deliveries = Delivery.all
+    @users = User.all
+    @delivery = User.find_by_username(params[:username])
 
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @deliveries }
+    end
+  end
+  
   def completed
     @deliveries = Delivery.all
     @users = User.all
@@ -22,7 +36,19 @@ class DeliveriesController < ApplicationController
       format.json { render json: @deliveries }
     end
   end
+  
+  def complete_for_salaries
+    @deliveries = Delivery.where(:user_id => @user.id)
+    @users = User.all
+    @delivery = User.find_by_username(params[:username])
 
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @deliveries }
+    end
+  end
+
+  
   def onroad
     @deliveries = Delivery.all
 
@@ -82,6 +108,30 @@ class DeliveriesController < ApplicationController
     @delivery = Delivery.new(params[:delivery])
 
     respond_to do |format|
+        if @delivery.weight > 1 and @delivery.weight < 1.5 
+  @delivery.price = 1.5  
+  end 
+     if @delivery.weight > 1.5 and @delivery.weight < 2 
+  @delivery.price = 2  
+   end 
+    if @delivery.weight > 2 and @delivery.weight < 2.5 
+   @delivery.price = 2.5  
+   end 
+   if @delivery.weight > 2.5 and @delivery.weight < 3 
+   @delivery.price = 3  
+   end 
+   if @delivery.weight > 3 and @delivery.weight < 3.5 
+   @delivery.price = 3.5  
+   end 
+   if @delivery.weight > 3.5 and @delivery.weight < 4 
+   @delivery.price = 4  
+   end 
+   if @delivery.weight > 4 and @delivery.weight < 4.5 
+   @delivery.price = 4.5  
+   end 
+    if @delivery.weight > 4.5 and @delivery.weight < 5 
+   @delivery.price = 5  
+   end
       if @delivery.save
         format.html { redirect_to @delivery, notice: 'Delivery was successfully created.' }
         format.json { render json: @delivery, status: :created, location: @delivery }
@@ -96,7 +146,8 @@ class DeliveriesController < ApplicationController
   # PUT /deliveries/1.json
   def update
     @delivery = Delivery.find(params[:id])
-
+    
+    
     respond_to do |format|
       if @delivery.update_attributes(params[:delivery])
         format.html { redirect_to @delivery, notice: 'Delivery was successfully updated.' }
@@ -119,4 +170,13 @@ class DeliveriesController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  private
+  
+  def find_delivery
+     if params[:user_id]
+      @user = User.find_by_id(params[:user_id])
+    end
+  end
+  
 end

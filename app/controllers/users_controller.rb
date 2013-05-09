@@ -68,7 +68,17 @@ class UsersController < ApplicationController
       end
     end
   end
-
+  
+   def deliveries
+    t = User.find(params[:id])
+    t.deliveries
+    
+     respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @users }
+    end
+  end
+  
   # DELETE /users/1
   # DELETE /users/1.json
   def destroy
