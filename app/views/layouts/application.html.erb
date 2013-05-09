@@ -28,17 +28,17 @@
               <li><%= link_to "Sign up", signup_path %></li>
               <% end %>
               <% if !(session[:user_id] or session[:admin_id])%>
-                  <li><%= link_to "Order", :controller => 'orders', :action => 'new' %></li>
+                  <li><%= link_to "Order", :controller => 'deliveries', :action => 'new' %></li>
                   <% end %>
                   <% if session[:user_id] or session[:admin_id]%>
-                   <li><%= link_to "Available Orders", :controller => 'orders', :action => 'index' %></li>
+                   <li><%= link_to "Available deliveries", :controller => 'deliveries', :action => 'index' %></li>
                   <% end %>
                    <% if session[:user_id]%>
-                   <li><%= link_to "My road Orders", onroad_path %></li>
+                   <li><%= link_to "My road deliveries", onroad_path %></li>
                   <% end %>
                    <% if session[:admin_id]%>
-                   <li><%= link_to "On road Orders", :controller => 'orders', :action => 'onroad' %></li>
-                    <li><%= link_to "Done Orders", :controller => 'orders', :action => 'completed'  %></li>
+                   <li><%= link_to "On road deliveries", :controller => 'deliveries', :action => 'onroad' %></li>
+                    <li><%= link_to "Done deliveries", :controller => 'deliveries', :action => 'completed'  %></li>
                   <% end %>
             </ul>
           </nav>

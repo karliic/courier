@@ -1,0 +1,31 @@
+<h1>Listing deliveries</h1>
+
+<table class="table table-bdeliveryed">
+  <tr>
+    <th>User</th>
+    <th>Name</th>
+    <th>Number</th>
+    <th>Start</th>
+    <th>Finish</th>
+    <th>Content</th>
+    
+    <th></th>
+  </tr>
+
+<% @deliveries.each do |delivery| %>
+  <% if delivery.end == true %>
+  <tr>
+     <td><%= delivery.user.username %></td>
+    <td><%= delivery.name %></td>
+    <td><%= delivery.number %></td>
+    <td><%= delivery.start %></td>
+    <td><%= delivery.finish %></td>
+    <td><%= delivery.content %></td>
+        <td><%= link_to 'Destroy', delivery, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+  <% end %>
+<% end %>
+</table>
+
+<br />
+

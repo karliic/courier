@@ -2,29 +2,29 @@
 
 <p>
   <b>Name:</b>
-  <%= @order.name %>
+  <%= @delivery.name %>
 </p>
 
 <p>
   <b>Number:</b>
-  <%= @order.number %>
+  <%= @delivery.number %>
 </p>
 
 <p>
   <b>Start:</b>
-  <%= @order.start %>
+  <%= @delivery.start %>
 </p>
 
 <p>
   <b>Finish:</b>
-  <%= @order.finish %>
+  <%= @delivery.finish %>
 </p>
 
 <p>
   <b>Content:</b>
-  <%= @order.content %>
+  <%= @delivery.content %>
 </p>
 
 
-<%= link_to 'Edit', edit_order_path(@order) %> |
+<%= link_to 'Edit', edit_delivery_path(@delivery) %> |
 <%= link_to 'Home', :controller => 'public', :action => 'index' %>

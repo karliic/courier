@@ -1,11 +1,11 @@
-<%= form_for(@order) do |f| %>
-  <% if @order.errors.any? %>
+<%= form_for(@delivery) do |f| %>
+  <% if @delivery.errors.any? %>
   <div id="error_explanation">
     <div class="alert alert-error">
-      The form contains <%= pluralize(@order.errors.count, "error") %>.
+      The form contains <%= pluralize(@delivery.errors.count, "error") %>.
     </div>
     <ul>
-    <% @order.errors.full_messages.each do |msg| %>
+    <% @delivery.errors.full_messages.each do |msg| %>
       <li>* <%= msg %></li>
     <% end %>
     </ul>
@@ -42,36 +42,36 @@
 
 <p>
   <b>Name:</b>
-  <%= @order.name %>
+  <%= @delivery.name %>
 </p>
 
 <p>
   <b>Number:</b>
-  <%= @order.number %>
+  <%= @delivery.number %>
 </p>
 
 <p>
   <b>Start:</b>
-  <%= @order.start %>
+  <%= @delivery.start %>
 </p>
 
 <p>
   <b>Finish:</b>
-  <%= @order.finish %>
+  <%= @delivery.finish %>
 </p>
 
 <p>
   <b>Content:</b>
-  <%= @order.content %>
+  <%= @delivery.content %>
 </p>
 
 
    <div class="field">
    Check for transport
-  	<%= f.check_box :road %>
+    <%= f.check_box :road %>
   </div>
-  	<% end %>
-  	
+    <% end %>
+    
   <div class="actions">
     <%= f.submit %>
   </div>

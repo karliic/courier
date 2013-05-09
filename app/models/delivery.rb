@@ -1,5 +1,5 @@
-class Order < ActiveRecord::Base
-  attr_accessible :content, :finish, :name, :number, :start, :road, :end, :user_id, :admin_id
+class Delivery < ActiveRecord::Base
+    attr_accessible :content, :finish, :name, :number, :start, :road, :end, :user_id, :admin_id
   
   belongs_to :user
   belongs_to :admin
@@ -9,5 +9,4 @@ class Order < ActiveRecord::Base
   validates :name, presence: true
   validates :number, presence: true, :numericality => true
   validates :start, presence: true
-  validates :road, presence: true
 end

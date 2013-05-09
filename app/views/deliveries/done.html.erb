@@ -1,0 +1,11 @@
+<h1>Done delivery</h1>
+<% if session[:user_id] %>
+<%= render 'formff' %>
+<% else %>
+
+
+<%= render 'form' %>
+<% end %>
+
+<%= link_to 'Show', @delivery %> |
+<%= link_to 'Back', deliveries_path %>

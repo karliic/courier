@@ -1,4 +1,7 @@
 Courier::Application.routes.draw do
+  resources :deliveries
+
+
   resources :orders
 
 
@@ -12,16 +15,16 @@ Courier::Application.routes.draw do
   # first created -> highest priority.
 
   # Sample of regular route:
-    match '/unavailable' => 'orders#onroad'
-    match '/onroad' => 'orders#courier_onroad'
-    match '/done' => 'orders#done'
-    match '/completed' => 'orders#completed'
+    match '/unavailable' => 'deliveries#onroad'
+    match '/onroad' => 'deliveries#courier_onroad'
+    match '/done' => 'deliveries#done'
+    match '/completed' => 'deliveries#completed'
     match '/signup' => 'users#new'
     match '/home' => 'public#index'
     match '/logout' => 'application#logout'
     match '/signin' => 'public#signin'
-    match '/order' => 'orders#new'
-    match '/orders' => 'orders#index'
+    match '/order' => 'deliveries#new'
+    match '/deliveries' => 'deliveries#index'
 
   # Keep in mind you can assign values other than :controller and :action
 
