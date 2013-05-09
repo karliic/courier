@@ -38,6 +38,7 @@
   <%= @delivery.price %>Ls
 </p>
 
-
+<% if (session[:user_id] or session[:admin_id])%>
 <%= link_to 'Edit', edit_delivery_path(@delivery) %> |
 <%= link_to 'Home', :controller => 'public', :action => 'index' %>
+<% end %>

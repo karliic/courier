@@ -2,7 +2,7 @@ class DeliveriesController < ApplicationController
   # GET /deliveries
   # GET /deliveries.json
   before_filter :find_delivery
-  before_filter :confirmed_logged_in
+  before_filter :confirmed_logged_in, :except => [:new, :create, :show]
   
   def index
     @deliveries = Delivery.all
@@ -105,9 +105,12 @@ class DeliveriesController < ApplicationController
   # POST /deliveries
   # POST /deliveries.json
   def create
+    
     @delivery = Delivery.new(params[:delivery])
-
     respond_to do |format|
+      if @delivery.weight == nil
+        
+      else
         if @delivery.weight > 1 and @delivery.weight < 1.5 
   @delivery.price = 1.5  
   end 
@@ -131,6 +134,7 @@ class DeliveriesController < ApplicationController
    end 
     if @delivery.weight > 4.5 and @delivery.weight < 5 
    @delivery.price = 5  
+   end
    end
       if @delivery.save
         format.html { redirect_to @delivery, notice: 'Delivery was successfully created.' }

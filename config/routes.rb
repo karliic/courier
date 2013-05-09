@@ -25,8 +25,8 @@ Courier::Application.routes.draw do
     match '/signin' => 'public#signin'
     match '/order' => 'deliveries#new'
     match '/deliveries' => 'deliveries#index'
-     match '/courier_salaries' => 'deliveries#courier_salaries'
-       match '/salaries' => 'deliveries#complete_for_salaries'
+    match '/courier_salaries' => 'deliveries#courier_salaries'
+    match '/salaries' => 'deliveries#complete_for_salaries'
 
   # Keep in mind you can assign values other than :controller and :action
 

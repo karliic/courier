@@ -1,5 +1,9 @@
 class User < ActiveRecord::Base
   attr_accessible :name, :password, :username, :salary
+
+  validates :name, presence: true
+  validates :password, presence: true
+  validates :username, presence: true
    
    has_many :deliveries
    

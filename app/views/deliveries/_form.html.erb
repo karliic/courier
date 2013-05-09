@@ -1,20 +1,8 @@
-<%= form_for(@delivery) do |f| %>
-  <% if @delivery.errors.any? %>
-  <div id="error_explanation">
-    <div class="alert alert-error">
-      The form contains <%= pluralize(@delivery.errors.count, "error") %>.
-    </div>
-    <ul>
-    <% @delivery.errors.full_messages.each do |msg| %>
-      <li>* <%= msg %></li>
-    <% end %>
-    </ul>
-  </div>
-<% end %>
 
 <div class="row">
   <div class="span6 offset3">
-
+<%= form_for(@delivery) do |f| %>
+<%= render 'shared/order_error' %>
  <% if !(session[:user_id] or session[:admin_id])  %>
   <div class="field">
     <%= f.label :name %>
