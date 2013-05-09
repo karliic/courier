@@ -28,7 +28,7 @@ class ApplicationController < ActionController::Base
       redirect_to(:action => 'index')
     else 
       flash[:notice] = "Invalid username/password combination."
-     redirect_to(:action => 'index')
+     redirect_to(:action => 'signin')
     end
   end
     

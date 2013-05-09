@@ -14,6 +14,26 @@ class DeliveriesController < ApplicationController
       format.json { render json: @deliveries }
     end
   end
+
+  def e_burger_deliveries
+    @deliveries = Delivery.all
+    @users = User.all
+    @delivery = User.find_by_username(params[:username])
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @deliveries }
+    end
+  end
+
+  def add_burger_order
+    @delivery = Delivery.new
+
+    respond_to do |format|
+      format.html # new.html.erb
+      format.json { render json: @delivery }
+    end
+  end
   
   def courier_salaries
      @deliveries = Delivery.all

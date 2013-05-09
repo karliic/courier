@@ -1,0 +1,44 @@
+Add burger order
+<table class="table table-bdeliveryed">
+  <% Order.all.each do |order| %>
+    <tr>
+      
+        <td><%= order.id %></td>
+      <td><%= order.address %></td>
+      <td><%= order.delivery_method %></td>
+      
+    </tr>
+  <% end %>
+</table>
+<div class="row">
+  <div class="span6 offset3">
+<%= form_for(@delivery) do |f| %>
+<%= render 'shared/order_error' %>
+ 
+ 
+  <div class="field">
+    <%= f.label :start %>
+    <%= f.text_field :start %>
+  </div>
+  <div class="field">
+    <%= f.label :finish %>
+    <%= f.text_field :finish %>
+  </div>
+   <div class="field">
+    <%= f.label :weight %>
+    <%= f.text_field :weight %>
+  </div>
+  
+ 
+ 
+
+  <p id="notice"><%= notice %></p>
+
+
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+</div>
+</div>

@@ -2,6 +2,7 @@
 
 <div class="row">
   <div class="span6 offset3">
+    <%= flash[:notice]%>
        <% if !(session[:user_id] or session[:admin_id])%>
         <%= form_tag(:action => 'attempt_login') do %>
 
