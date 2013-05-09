@@ -13,9 +13,16 @@ Courier::Application.routes.draw do
 
   # Sample of regular route:
     match '/unavailable' => 'orders#onroad'
-    match '/myroad' => 'orders#courier_onroad'
-     match '/done' => 'orders#done'
-      match '/completed' => 'orders#completed'
+    match '/onroad' => 'orders#courier_onroad'
+    match '/done' => 'orders#done'
+    match '/completed' => 'orders#completed'
+    match '/signup' => 'users#new'
+    match '/home' => 'public#index'
+    match '/logout' => 'application#logout'
+    match '/signin' => 'public#signin'
+    match '/order' => 'orders#new'
+    match '/orders' => 'orders#index'
+
   # Keep in mind you can assign values other than :controller and :action
 
   # Sample of named route:

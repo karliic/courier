@@ -1,4 +1,11 @@
  <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
-	
+	 <% if !(session[:user_id] or session[:admin_id])%>
+<%= form_tag(:action => 'attempt_login') do %>
+    Username: <%= text_field_tag(:username) %>
+          Password <%= password_field_tag(:password) %> 
+           <%= submit_tag("Log In") %></td>
+  
+     <% end %>
+      <% end %> 

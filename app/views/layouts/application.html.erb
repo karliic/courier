@@ -1,44 +1,53 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Courier</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-	<% if !(session[:user_id] or session[:admin_id])%>
-<%= form_tag(:action => 'attempt_login') do %>
-		Username: <%= text_field_tag(:username) %>
-		      Password <%= password_field_tag(:password) %> 
-		       <%= submit_tag("Log In") %></td>
-	
-		 <% end %>
-		  <% end %>	
-Sākumlapa <% if session[:user_id]  %>
+  <head>
+    <title>Title</title>
+    <%= stylesheet_link_tag    "application", media: "all" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <header class="navbar navbar-fixed-top navbar-inverse">
+      <div class="navbar-inner">
+        <div class="container">
+          <%= link_to "superkurjers", home_path, id: "logo" %>
+          <nav>
+            <ul class="nav pull-right">
+
+  <% if session[:user_id]  %>
 <b> Hello,  <%= session[:username]%> !</b><%= link_to("Logout",:controller => 'application', :action => 'logout') %>
-		    <% end %>
+<% end %>
 <% if session[:admin_id]  %>
-<b> ADMIN,  <%= session[:username]%> !</b><%= link_to("Logout",:controller => 'application', :action => 'logout') %>
-		    <% end %>
- <li><%= link_to "Home", :controller => 'public', :action => 'index' %></li>
-          <li><%= link_to "Help",    '#' %></li>
-          <li><%= link_to "Sign in", :controller => 'public', :action => 'signin' %></li>
-              <li><%= link_to "Sign up", :controller => 'users', :action => 'new' %></li>
-                  <li><%= link_to "Order...", :controller => 'orders', :action => 'new' %></li>
+<b> ADMIN,  <%= session[:username]%> !</b><%= link_to("Logout", logout_path) %>
+        <% end %>
+        <% if !(session[:user_id] or session[:admin_id])%>
+<li><%= link_to "Sign in", signin_path %></li>
+              <li><%= link_to "Sign up", signup_path %></li>
+              <% end %>
+              <% if !(session[:user_id] or session[:admin_id])%>
+                  <li><%= link_to "Order", :controller => 'orders', :action => 'new' %></li>
+                  <% end %>
                   <% if session[:user_id] or session[:admin_id]%>
                    <li><%= link_to "Available Orders", :controller => 'orders', :action => 'index' %></li>
                   <% end %>
                    <% if session[:user_id]%>
-                   <li><%= link_to "My road Orders", :controller => 'orders', :action => 'courier_onroad' %></li>
+                   <li><%= link_to "My road Orders", onroad_path %></li>
                   <% end %>
                    <% if session[:admin_id]%>
                    <li><%= link_to "On road Orders", :controller => 'orders', :action => 'onroad' %></li>
                     <li><%= link_to "Done Orders", :controller => 'orders', :action => 'completed'  %></li>
                   <% end %>
-                 
-
-<%= yield %>
-
-</body>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+    <div class="container">
+      <%= yield %>
+    </div>
+  </body>
 </html>
+

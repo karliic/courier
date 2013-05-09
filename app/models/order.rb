@@ -3,4 +3,11 @@ class Order < ActiveRecord::Base
   
   belongs_to :user
   belongs_to :admin
+
+  validates :content, presence: true
+  validates :finish, presence: true
+  validates :name, presence: true
+  validates :number, presence: true, :numericality => true
+  validates :start, presence: true
+  validates :road, presence: true
 end

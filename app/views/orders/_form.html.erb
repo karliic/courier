@@ -1,34 +1,39 @@
 <%= form_for(@order) do |f| %>
   <% if @order.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:</h2>
-
-      <ul>
-      <% @order.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+  <div id="error_explanation">
+    <div class="alert alert-error">
+      The form contains <%= pluralize(@order.errors.count, "error") %>.
     </div>
-  <% end %>
+    <ul>
+    <% @order.errors.full_messages.each do |msg| %>
+      <li>* <%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<div class="row">
+  <div class="span6 offset3">
+
  <% if !(session[:user_id] or session[:admin_id])  %>
   <div class="field">
-    <%= f.label :name %><br />
+    <%= f.label :name %>
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :number %><br />
+    <%= f.label :number %>
     <%= f.number_field :number %>
   </div>
   <div class="field">
-    <%= f.label :start %><br />
+    <%= f.label :start %>
     <%= f.text_field :start %>
   </div>
   <div class="field">
-    <%= f.label :finish %><br />
+    <%= f.label :finish %>
     <%= f.text_field :finish %>
   </div>
   <div class="field">
-    <%= f.label :content %><br />
+    <%= f.label :content %>
     <%= f.text_field :content %>
   </div>
   <% end %>
@@ -71,3 +76,5 @@
     <%= f.submit %>
   </div>
 <% end %>
+</div>
+</div>
