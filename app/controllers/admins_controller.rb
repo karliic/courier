@@ -1,6 +1,7 @@
 class AdminsController < ApplicationController
   # GET /admins
   # GET /admins.json
+  before_filter :confirmed_logged_in
   def index
     @admins = Admin.all
 
