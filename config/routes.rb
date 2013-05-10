@@ -2,6 +2,9 @@ Courier::Application.routes.draw do
  
 
 
+  resources :somethings
+
+
   resources :orders
  
 
