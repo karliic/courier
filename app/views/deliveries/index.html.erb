@@ -26,6 +26,30 @@
     <td><%= delivery.finish %></td>
     <td><%= delivery.content %></td>
     <td><%= delivery.weight %></td>
+    <%  if delivery.weight > 1 and delivery.weight < 1.5 %>
+  <% delivery.price = 1.5  %>
+  <% end %>
+   <%  if delivery.weight > 1.5 and delivery.weight < 2 %>
+  <% delivery.price = 2  %>
+  <% end %>
+  <%  if delivery.weight > 2 and delivery.weight < 2.5 %>
+  <% delivery.price = 2.5  %>
+  <% end %>
+   <%  if delivery.weight > 2.5 and delivery.weight < 3 %>
+  <% delivery.price = 3  %>
+  <% end %>
+  <%  if delivery.weight > 3 and delivery.weight < 3.5 %>
+  <% delivery.price = 3.5  %>
+  <% end %>
+   <%  if delivery.weight > 3.5 and delivery.weight < 4 %>
+  <% delivery.price = 4  %>
+  <% end %>
+  <%  if delivery.weight > 4 and delivery.weight < 4.5 %>
+  <% delivery.price = 4.5  %>
+  <% end %>
+  <%  if delivery.weight > 4.5 and delivery.weight < 5 %>
+  <% delivery.price = 5  %>
+  <% end %>
     <td><%= delivery.price %></td>
     <td><%= link_to 'Watch for tansporting', edit_delivery_path(delivery) %></td>
     <% if session[:admin_id]  %>
