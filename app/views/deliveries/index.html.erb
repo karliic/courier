@@ -10,9 +10,11 @@
     <th>Content</th>
      <th>Weight</th>
     <th>Price</th>
-    <th>One</th>
+    <% if session[:user_id]  %>
+    <th>Accept</th>
+    <% end %>
     <% if session[:admin_id]  %>
-    <th>Two</th>
+    <th>Delete</th>
     <% end %>
   </tr>
 
@@ -51,7 +53,9 @@
   <% delivery.price = 5  %>
   <% end %>
     <td><%= delivery.price %></td>
+    <% if session[:user_id]  %>
     <td><%= link_to 'Watch for tansporting', edit_delivery_path(delivery) %></td>
+    <% end %>
     <% if session[:admin_id]  %>
     <td><%= link_to 'Destroy', delivery, method: :delete, data: { confirm: 'Are you sure?' } %></td>
     <% end %>

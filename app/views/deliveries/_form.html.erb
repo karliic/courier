@@ -6,31 +6,31 @@
  <% if !(session[:user_id] or session[:admin_id])  %>
   <div class="field">
     <%= f.label :name %>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, :required => true %>
   </div>
   <div class="field">
     <%= f.label :number %>
-    <%= f.number_field :number %>
+    <%= f.number_field :number, :required => true %>
   </div>
    <div class="field">
     <%= f.label :city %>
-    <%= f.text_field :city %>
+    <%= f.text_field :city, :required => true %>
   </div>
   <div class="field">
     <%= f.label :start %>
-    <%= f.text_field :start %>
+    <%= f.text_field :start, :required => true %>
   </div>
   <div class="field">
     <%= f.label :finish %>
-    <%= f.text_field :finish %>
+    <%= f.text_field :finish, :required => true %>
   </div>
   <div class="field">
     <%= f.label :content %>
-    <%= f.text_field :content %>
+    <%= f.text_field :content, :required => true %>
   </div>
    <div class="field">
     <%= f.label :weight %>
-    <%= f.text_field :weight %>
+    <%= f.text_field :weight, :required => true %>
   </div>
  
   <% end %>

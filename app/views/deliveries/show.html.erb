@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-
+<% if @delivery.name != nil %>
 <p>
   <b>Name:</b>
   <%= @delivery.name %>
@@ -13,7 +13,7 @@
   <b>City:</b>
   <%= @delivery.city %>
 </p>
-
+<% end %>
 <p>
   <b>Start:</b>
   <%= @delivery.start %>
@@ -23,11 +23,12 @@
   <b>Finish:</b>
   <%= @delivery.finish %>
 </p>
-
+<% if @delivery.content != nil %>
 <p>
   <b>Content:</b>
   <%= @delivery.content %>
 </p>
+<% end %>
 <p>
   <b>Weight:</b>
   <%= @delivery.weight %>Kg

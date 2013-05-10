@@ -8,8 +8,9 @@
     <th>Start</th>
     <th>Finish</th>
     <th>Content</th>
-    
+    <% if session[:user_id]  %>
     <th></th>
+    <% end %>
     <th></th>
   </tr>
 
@@ -22,7 +23,9 @@
     <td><%= delivery.start %></td>
     <td><%= delivery.finish %></td>
     <td><%= delivery.content %></td>
+    <% if session[:user_id]  %>
     <td><%= link_to 'Watch for tansporting', edit_delivery_path(delivery) %></td>
+    <% end %>
     <td><%= link_to 'Destroy', delivery, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
   <% end %>

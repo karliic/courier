@@ -15,5 +15,4 @@ class Delivery < ActiveRecord::Base
   #validates :number, presence: true, :numericality => true
   #validates :start, presence: true
   #validates :city, presence: true
-  validates :weight, presence: true
 end
