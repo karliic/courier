@@ -9,9 +9,11 @@
     <th>Finish</th>
     <th>Content</th>
      <th>Weight</th>
-          <th>Price</th>
+    <th>Price</th>
     <th>One</th>
+    <% if session[:admin_id]  %>
     <th>Two</th>
+    <% end %>
   </tr>
 
 <% @deliveries.each do |delivery| %>
@@ -26,7 +28,9 @@
     <td><%= delivery.weight %></td>
     <td><%= delivery.price %></td>
     <td><%= link_to 'Watch for tansporting', edit_delivery_path(delivery) %></td>
+    <% if session[:admin_id]  %>
     <td><%= link_to 'Destroy', delivery, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <% end %>
   </tr>
   <% end %>
 <% end %>

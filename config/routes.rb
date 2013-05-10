@@ -15,6 +15,7 @@ Courier::Application.routes.draw do
   # first created -> highest priority.
 
   # Sample of regular route:
+    match '/eburger_delivered' => 'deliveries#completed_eburger'
     match '/unavailable' => 'deliveries#onroad'
     match '/onroad' => 'deliveries#courier_onroad'
     match '/done' => 'deliveries#done'

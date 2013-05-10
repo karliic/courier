@@ -4,14 +4,18 @@
   <tr>
     <th>Name</th>
     <th>Username</th>
+    <% if session[:admin_id]  %>
     <th></th>
+    <% end %>
   </tr>
 
 <% @users.each do |user| %>
   <tr>
     <td><%= user.name %></td>
     <td><%= user.username %></td>
+    <% if session[:admin_id]  %>
     <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <% end %>
   </tr>
 <% end %>
 </table>

@@ -2,7 +2,7 @@ class DeliveriesController < ApplicationController
   # GET /deliveries
   # GET /deliveries.json
   before_filter :find_delivery
-  before_filter :confirmed_logged_in, :except => [:new, :create, :show]
+  before_filter :confirmed_logged_in, :except => [:new, :create, :show, :completed_eburger]
   
   def index
     @deliveries = Delivery.all
@@ -13,6 +13,10 @@ class DeliveriesController < ApplicationController
       format.html # index.html.erb
       format.json { render json: @deliveries }
     end
+  end
+
+  def completed_eburger
+    render json: Delivery.where(:start => 'E-Burger', :end => true)
   end
 
   def e_burger_deliveries
