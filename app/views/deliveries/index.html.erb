@@ -1,5 +1,7 @@
 <h1>Listing deliveries</h1>
+<% if session[:admin_id]  %>
  <%= link_to "E-BURGER DELIVERIES ONLY", :controller => "deliveries", :action => 'e_burger_deliveries'%>
+ <% end %>
 <table class="table table-bdeliveryed">
   <tr>
     <th>Name</th>
