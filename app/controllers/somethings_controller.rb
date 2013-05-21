@@ -9,6 +9,7 @@ class SomethingsController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @somethings }
+      format.xml { render xml: @somethings }
     end
   end
 
